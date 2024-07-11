@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const { data: page } = await useAsyncData("index", () =>
   queryContent("/").findOne()
 );
