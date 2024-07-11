@@ -1,40 +1,40 @@
-title: Nuxt UI Pro - SaaS template
-description: Nuxt UI Pro is a collection of premium Vue components built on top of Nuxt UI to create beautiful & responsive Nuxt applications in minutes.
+title: CodeHatari Blogging Hub
+description: CodeHatari Blogging Hub is a platform to share and discover coding knowledge, tutorials, and tips. Build your own blog with ease using our components.
 navigation: false
 hero:
-  title: Build your SaaS in seconds
-  description: This template demonstrates most of Nuxt UI Pro's components. It's a great starting point to build your own SaaS.
+  title: Share Your Coding Knowledge </CodeHatari>
+  description: This template showcases Code Blogging Hub's components. It's a perfect starting point for creating your own coding blog.
   headline:
-    label: Made with Nuxt UI Pro
-    to: https://ui.nuxt.com/pro
+    label: Welcome To CodeHatari Blogging Site
+    # to: https://codeblogginghub.com/pro
     icon: i-heroicons-arrow-top-right-on-square-20-solid
   links:
     - label: Get started
-      to: '/signup'
+      to: "/signup"
       size: xl
       color: black
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-    - label: Use this template
+    - label: Create Account With Us
       icon: i-simple-icons-github
       size: xl
       color: gray
-      to: https://github.com/nuxt-ui-pro/saas
+      # to: https://github.com/codeblogginghub/template
       target: _blank
 sections:
-  - title: The power of our service
-    description: Aliqua labore laboris fugiat. Reprehenderit exercitation eu commodo. Officia nostrud sit et aliqua ea ex sunt minim incididunt sunt.
+  - title: The power of our platform
+    description: Discover how Code Blogging Hub can help you share your knowledge and connect with other developers.
     id: features
     align: left
     features:
       - name: Easy to use
-        description: Id laborum laboris duis nostrud excepteur ut velit.
+        description: Our platform is designed to be user-friendly and intuitive.
         icon: i-heroicons-cog
       - name: Reliable
-        description: Magna Lorem ex cillum fugiat ad enim aute irure sit duis minim.
+        description: We ensure your blog is always available and performs well.
         icon: i-heroicons-check
       - name: Secure
-        description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing.
+        description: Your data and content are safe with our advanced security features.
         icon: i-heroicons-lock-closed
     links:
       - label: Explore components
@@ -45,17 +45,17 @@ sections:
         size: md
         class: ml-8
   - title: The speed of our service
-    description: Cillum sint enim excepteur ut deserunt qui nisi in deserunt in. Deserunt aliquip quis aliquip eu quis ex velit velit nostrud sit.
+    description: Enjoy fast load times and quick responses with our optimized platform.
     align: right
     features:
       - name: Fast
-        description: Qui reprehenderit nostrud dolore nisi ad fugiat labore eiusmod.
+        description: Our platform is optimized for speed, ensuring quick load times.
         icon: i-heroicons-rocket-launch
       - name: Affordable
-        description: Reprehenderit fugiat elit in do ipsum ut pariatur.
+        description: Get all these features at a competitive price.
         icon: i-heroicons-currency-dollar
       - name: Scalable
-        description: Lorem deserunt et eiusmod. Ea in consectetur minim officia.
+        description: Our platform grows with you, handling increased traffic with ease.
         icon: i-heroicons-chart-bar
     links:
       - label: Learn more
@@ -66,77 +66,77 @@ sections:
         size: md
         class: ml-8
 features:
-  title: Why choose our service?
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  title: Why choose our platform?
+  description: Explore the features that make Code Blogging Hub the best choice for your coding blog.
   items:
     - title: Easy to use
-      description: Id laborum laboris duis nostrud excepteur ut velit nulla magna Lorem proident non.
+      description: Our platform is designed to be user-friendly and intuitive.
       icon: i-heroicons-cog
     - title: Reliable
-      description: Magna Lorem ex cillum fugiat ad enim aute irure sit duis minim.
+      description: We ensure your blog is always available and performs well.
       icon: i-heroicons-check
     - title: Secure
-      description: Proident nostrud excepteur sint ut culpa consectetur aute adipisicing non anim ullamco.
+      description: Your data and content are safe with our advanced security features.
       icon: i-heroicons-lock-closed
     - title: Fast
-      description: Qui reprehenderit nostrud dolore nisi ad fugiat labore eiusmod sint aliquip nisi voluptate.
+      description: Our platform is optimized for speed, ensuring quick load times.
       icon: i-heroicons-rocket-launch
     - title: Affordable
-      description: Reprehenderit fugiat elit in do ipsum ut pariatur.
+      description: Get all these features at a competitive price.
       icon: i-heroicons-currency-dollar
     - title: Scalable
-      description: Lorem deserunt et eiusmod. Ea in consectetur minim officia ullamco enim deserunt est.
+      description: Our platform grows with you, handling increased traffic with ease.
       icon: i-heroicons-chart-bar
 testimonials:
   headline: Testimonials
-  title: What our customers are saying.
-  description: Proident sunt exercitation minim laborum enim laboris labore esse.
+  title: What our users are saying.
+  description: Hear from the developers who have shared their knowledge on Code Blogging Hub.
   items:
-    - quote: Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur. In fugiat Lorem sit velit id veniam esse eiusmod non ea voluptate cupidatat reprehenderit ullamco dolore. Mollit laborum occaecat aliquip.
+    - quote: "Code Blogging Hub is incredibly easy to use and has helped me reach a wider audience with my tutorials."
       author:
         name: Rose Roberson
-        description: CEO at Company
+        description: Full-stack Developer
         avatar:
           src: https://i.pravatar.cc/120?img=1
           loading: lazy
-    - quote: Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.
+    - quote: "The reliability and speed of the platform are impressive. I never have to worry about my blog being down."
       author:
         name: Chace Rodgers
-        description: CEO at Company
+        description: Backend Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=7
           loading: lazy
-    - quote: Id duis velit enim officia ad nisi incididunt magna ex dolor minim deserunt dolor. Esse incididunt cillum nostrud esse do quis amet labore amet nulla eiusmod amet nulla Lorem. Incididunt ex voluptate irure officia laboris ea proident est qui.
+    - quote: "I love the security features. I know my content is safe, and I can focus on writing."
       author:
         name: Cornelius Sheppard
-        description: CEO at Company
+        description: Security Specialist
         avatar:
           src: https://i.pravatar.cc/120?img=3
           loading: lazy
-    - quote: Velit consectetur in adipisicing culpa eiusmod commodo eu ex dolore. Officia irure nisi dolor dolore velit fugiat. Aliqua sint aliqua aute elit eu sunt.
+    - quote: "Code Blogging Hub offers great value for money. The features are top-notch."
       author:
         name: Destinee Woods
-        description: CEO at Company
+        description: Frontend Developer
         avatar:
           src: https://i.pravatar.cc/120?img=5
           loading: lazy
-    - quote: Proident quis deserunt qui ex exercitation veniam id Lorem est cupidatat ipsum irure aliquip ad.
+    - quote: "The platform's scalability means I can grow my audience without worrying about performance issues."
       author:
         name: Kaleb Mccormick
-        description: CEO at Company
+        description: DevOps Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=8
           loading: lazy
-    - quote: Magna officia quis ea ea in officia non voluptate ipsum culpa do labore sunt. Aute est dolore commodo sint officia ad laboris dolor magna aliquip exercitation tempor commodo.
+    - quote: "Code Blogging Hub makes it easy to share my coding knowledge and connect with other developers."
       author:
         name: Jazmin Mccall
-        description: CEO at Company
+        description: Software Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=9
           loading: lazy
 cta:
   title: Get started today
-  description: Nisi mollit id aliquip sunt est laborum sit sit.
+  description: Join Code Blogging Hub and start sharing your knowledge with the world.
   links:
     - label: Buy now
       size: xl

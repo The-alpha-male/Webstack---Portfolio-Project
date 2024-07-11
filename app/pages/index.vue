@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: page } = await useAsyncData("index", () =>
   queryContent("/").findOne()
 );
@@ -20,10 +20,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <!-- {{ JSON.stringify(page) }} -->
   <div v-if="page">
     <ULandingHero
-      title="Welcome To CodeHatari Bloging site"
+      :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
     >
@@ -47,7 +46,7 @@ useSeoMeta({
             <span class="absolute inset-0" aria-hidden="true" />
           </NuxtLink>
 
-          {{ page.hero.headline.label }} here i am
+          {{ page.hero.headline.label }}
 
           <UIcon
             v-if="page.hero.headline.icon"
@@ -58,8 +57,13 @@ useSeoMeta({
       </template>
     </ULandingHero>
 
-    <ULandingSection class="!pt-0">
-      <ImagePlaceholder />
+    <ULandingSection class="imageHolder !pt-0">
+      <!-- hereis image -->
+      <img
+        src="https://images.unsplash.com/photo-1615525137689-198778541af6?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Description of the image"
+      />
+      <!-- <ImagePlaceholder /> -->
     </ULandingSection>
 
     <ULandingSection
@@ -124,6 +128,7 @@ useSeoMeta({
     ),
     linear-gradient(to bottom, rgb(var(--color-gray-200)) 1px, transparent 1px);
 }
+
 .dark {
   .landing-grid {
     background-image: linear-gradient(
