@@ -8,7 +8,7 @@
 - [Play on Stackblitz](https://stackblitz.com/github/nuxt-ui-pro/saas)
 - [Documentation](https://ui.nuxt.com/pro/getting-started)
 
-## Quick Start
+## Quick Start.
 
 ```bash [Terminal]
 npx nuxi init -t github:nuxt-ui-pro/saas
