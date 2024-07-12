@@ -13,14 +13,14 @@ hero:
       to: "/signup"
       size: xl
       color: black
-      icon: i-heroicons-arrow-right-20-solid
+      # icon: i-heroicons-arrow-right-20-solid
       trailing: true
-    - label: Create Account With Us
-      icon: i-simple-icons-github
+    - label: Blogs
+      # icon: i-simple-icons-github
       size: xl
       color: gray
-      # to: https://github.com/codeblogginghub/template
-      target: _blank
+      to: blog
+      # target: _blank
 sections:
   - title: The power of our platform
     description: Discover how Code Blogging Hub can help you share your knowledge and connect with other developers.
