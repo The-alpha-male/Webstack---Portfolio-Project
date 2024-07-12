@@ -2,12 +2,12 @@ title: CodeHatari Blogging Hub
 description: CodeHatari Blogging Hub is a platform to share and discover coding knowledge, tutorials, and tips. Build your own blog with ease using our components.
 navigation: false
 hero:
-  title: Share Your Coding Knowledge </CodeHatari>
+  title: Share Your  Knowledge </CodeHatari>
   description: This template showcases Code Blogging Hub's components. It's a perfect starting point for creating your own coding blog.
   headline:
     label: Welcome To CodeHatari Blogging Site
     # to: https://codeblogginghub.com/pro
-    icon: i-heroicons-arrow-top-right-on-square-20-solid
+    # icon: i-heroicons-arrow-top-right-on-square-20-solid
   links:
     - label: Get started
       to: "/signup"
@@ -94,42 +94,42 @@ testimonials:
   items:
     - quote: "Code Blogging Hub is incredibly easy to use and has helped me reach a wider audience with my tutorials."
       author:
-        name: Rose Roberson
+        name: Elijah Kinyanjui
         description: Full-stack Developer
         avatar:
           src: https://i.pravatar.cc/120?img=1
           loading: lazy
     - quote: "The reliability and speed of the platform are impressive. I never have to worry about my blog being down."
       author:
-        name: Chace Rodgers
+        name: Willow G
         description: Backend Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=7
           loading: lazy
     - quote: "I love the security features. I know my content is safe, and I can focus on writing."
       author:
-        name: Cornelius Sheppard
+        name: Ronny Munene
         description: Security Specialist
         avatar:
           src: https://i.pravatar.cc/120?img=3
           loading: lazy
     - quote: "Code Blogging Hub offers great value for money. The features are top-notch."
       author:
-        name: Destinee Woods
+        name: Kimba TheLion
         description: Frontend Developer
         avatar:
           src: https://i.pravatar.cc/120?img=5
           loading: lazy
     - quote: "The platform's scalability means I can grow my audience without worrying about performance issues."
       author:
-        name: Kaleb Mccormick
+        name: Jurien
         description: DevOps Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=8
           loading: lazy
     - quote: "Code Blogging Hub makes it easy to share my coding knowledge and connect with other developers."
       author:
-        name: Jazmin Mccall
+        name: Peter Karanja
         description: Software Engineer
         avatar:
           src: https://i.pravatar.cc/120?img=9
