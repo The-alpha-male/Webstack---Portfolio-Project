@@ -1,65 +1,111 @@
-<script setup lang="ts">
-import type { BlogPost } from "~/types";
+<script setup>
+import { ref, onMounted } from "vue";
+import { createError } from "nuxt/app"; // Import createError properly
 
-const { data: page } = await useAsyncData("blog", () =>
-  queryContent("/blog").findOne()
-);
-if (!page.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Page not found",
-    fatal: true,
-  });
-}
+// import { ref, computed, onMounted } from "vue";
 
-const { data: posts } = await useAsyncData("posts", () =>
-  queryContent<BlogPost>("/blog")
-    .where({ _extension: "md" })
-    .sort({ date: -1 })
-    .find()
-);
+const posts = ref([]);
 
-useSeoMeta({
-  title: page.value.title,
-  ogTitle: page.value.title,
-  description: page.value.description,
-  ogDescription: page.value.description,
+// import type { BlogPost } from "~/types";
+
+// const { data: page } = await useAsyncData("blog", () =>
+//   queryContent("/blog").findOne()
+// );
+// if (!page.value) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: "Page not found",
+//     fatal: true,
+//   });
+// }
+
+// const { data: posts } = await useAsyncData("posts", () =>
+//   queryContent<BlogPost>("/blog")
+//     .where({ _extension: "md" })
+//     .sort({ date: -1 })
+//     .find()
+// );
+
+const getAPIData = async () => {
+  try {
+    let res = await fetch(
+      "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=47d73cde901749e4b0a853dd07b43a4a"
+    );
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    }
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Failed to fetch data",
+      fatal: true,
+    });
+  }
+};
+
+onMounted(async () => {
+  try {
+    let data = await getAPIData();
+    if (!data.articles) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: "Page not found",
+        fatal: true,
+      });
+    }
+    posts.value = data.articles;
+  } catch (error) {
+    console.error("Error in onMounted:", error);
+  }
 });
 
-defineOgImage({
-  component: "Saas",
-  title: page.value.title,
-  description: page.value.description,
-});
+// useSeoMeta({
+//   title: page.value.title,
+//   ogTitle: page.value.title,
+//   description: page.value.description,
+//   ogDescription: page.value.description,
+// });
+
+// defineOgImage({
+//   component: "Saas",
+//   title: page.value.title,
+//   description: page.value.description,
+// });
 </script>
 
 <template>
   <UContainer>
-    <UPageHeader v-bind="page" class="py-[50px]" />
+    <!-- {{ posts }} -->
+    <UPageHeader :posts="posts" class="py-[50px]" />
 
     <UPageBody>
-      <UBlogList>
+      <UBlogList orientation="horizontal">
         <UBlogPost
           v-for="(post, index) in posts"
-          :key="index"
-          :to="post._path"
+          :key="post.id"
+          :to="post.url"
           :title="post.title"
           :description="post.description"
-          :image="post.image"
+          :image="
+            post.urlToImage
+              ? post.urlToImage
+              : 'https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          "
           :date="
-            new Date(post.date).toLocaleDateString('en', {
+            new Date(post.publishedAt).toLocaleDateString('en', {
               year: 'numeric',
               month: 'short',
               day: 'numeric',
             })
           "
-          :authors="post.authors"
+          :authors="post.author"
           :badge="post.badge"
           :orientation="index === 0 ? 'horizontal' : 'vertical'"
-          :class="[index === 0 && 'col-span-full']"
-          :ui="{
-            description: 'line-clamp-2',
-          }"
+          :class="[index === 0 ? 'col-span-full' : '']"
+          :ui="{ description: 'line-clamp-2' }"
         />
       </UBlogList>
     </UPageBody>
