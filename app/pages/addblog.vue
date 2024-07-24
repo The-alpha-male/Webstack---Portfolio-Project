@@ -3,55 +3,67 @@
 <!-- eslint-disable @stylistic/comma-dangle -->
 <!-- eslint-disable @stylistic/quotes -->
 <script setup lang="ts">
+import { ref } from "vue";
 const toast = useToast();
 definePageMeta({
   layout: "auth",
 });
 
 useSeoMeta({
-  title: "Sign up",
+  title: "Add Blog Post",
 });
 
-const fields = [
+const fields = ref([
   {
-    name: "name",
+    name: "title",
     type: "text",
-    label: "Name",
-    placeholder: "Enter your name",
+    label: "Title",
+    placeholder: "Enter the blog title",
   },
   {
-    name: "email",
-    type: "text",
-    label: "Email",
-    placeholder: "Enter your email",
+    name: "category",
+    type: "select",
+    label: "Category",
+    placeholder: "Select a category",
+    options: [
+      "computer Science",
+      "Technology",
+      "Software Engneering",
+      "Programming",
+    ],
   },
   {
-    name: "password",
-    label: "Password",
-    type: "password",
-    placeholder: "Enter your password",
+    name: "content",
+    type: "textarea",
+    label: "Content",
+    placeholder: "Enter the blog content",
   },
-];
 
-const validate = (state: any) => {
+  {
+    name: "image",
+    // type: "text",
+    label: "Image",
+    placeholder: "Enter the image URL",
+    type: "file",
+    multiple: true,
+  },
+]);
+const state = ref({
+  title: "",
+  content: "",
+  images: [] as File[],
+  category: "",
+});
+const validate = () => {
   const errors = [];
-  if (!state.email)
-    errors.push({ path: "email", message: "Email is required" });
-  if (!state.password)
-    errors.push({ path: "password", message: "Password is required" });
+  if (!state.value.title)
+    errors.push({ path: "title", message: "Title is required" });
+  if (!state.value.content)
+    errors.push({ path: "content", message: "Content is required" });
+  if (!state.value.category)
+    errors.push({ path: "category", message: "Category is required" });
   return errors;
 };
-
-const providers = [
-  {
-    label: "Continue with GitHub",
-    icon: "i-simple-icons-github",
-    color: "gray" as const,
-    click: () => {
-      console.log("Redirect to GitHub");
-    },
-  },
-];
 
 const onSubmit = async (data: any) => {
   const router = useRouter();
@@ -59,7 +71,7 @@ const onSubmit = async (data: any) => {
   console.log(data);
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/add_users", {
+    const response = await fetch("http://127.0.0.1:8000/blogs/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,11 +82,11 @@ const onSubmit = async (data: any) => {
     if (!response.ok) {
       // Handle error response
       const errorData = await response.json();
-      console.error("Failed to add user:", errorData.detail);
+      console.error("Failed to add blog post:", errorData.detail);
       toast.add({
-        title: "User creation failed",
+        title: "Blog post creation failed",
         description:
-          errorData.detail || "An error occurred while creating the user.",
+          errorData.detail || "An error occurred while creating the blog post.",
         timeout: 1000,
       });
       return;
@@ -82,15 +94,15 @@ const onSubmit = async (data: any) => {
 
     const result = await response.json(); // Get the response JSON
     console.log(result);
-    await navigateTo({ path: "/login" });
+    await navigateTo({ path: "/blogs" });
     toast.add({
-      title: "User created successfully",
+      title: "Blog post created successfully",
       timeout: 1000,
     });
   } catch (error) {
     console.error("Error during fetch:", error);
     toast.add({
-      title: "User creation failed",
+      title: "Blog post creation failed",
       description: "An unexpected error occurred. Please try again.",
       timeout: 1000,
     });
@@ -107,22 +119,11 @@ const onSubmit = async (data: any) => {
       :validate="validate"
       :providers="providers"
       align="top"
-      title="Create an account"
+      title="Create a Blog Post"
       :ui="{ base: 'text-center', footer: 'text-center' }"
-      :submit-button="{ label: 'Create account' }"
+      :submit-button="{ label: 'addblog' }"
       @submit="onSubmit"
     >
-      <template #description>
-        Already have an account?
-        <NuxtLink to="/login" class="text-primary font-medium">Login</NuxtLink>.
-      </template>
-
-      <template #footer>
-        By signing up, you agree to our
-        <NuxtLink to="/" class="text-primary font-medium">
-          Terms of Service </NuxtLink
-        >.
-      </template>
     </UAuthForm>
   </UCard>
 </template>

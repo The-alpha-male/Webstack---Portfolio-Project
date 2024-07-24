@@ -1,3 +1,6 @@
+<!-- eslint-disable @stylistic/semi -->
+<!-- eslint-disable @stylistic/comma-dangle -->
+<!-- eslint-disable @stylistic/quotes -->
 <script setup>
 import { ref, onMounted } from "vue";
 import { createError } from "nuxt/app"; // Import createError properly
