@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/": { redirect: "/blog", prerender: false },
+    "/": { redirect: "/news", prerender: false },
   },
 
   devtools: {

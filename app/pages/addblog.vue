@@ -3,7 +3,8 @@
 <!-- eslint-disable @stylistic/comma-dangle -->
 <!-- eslint-disable @stylistic/quotes -->
 <script setup lang="ts">
-import { ref } from "vue";
+import type { FormError, FormSubmitEvent } from "#ui/types";
+import { ref, reactive } from "vue";
 const toast = useToast();
 definePageMeta({
   layout: "auth",
@@ -13,70 +14,53 @@ useSeoMeta({
   title: "Add Blog Post",
 });
 
-const fields = ref([
-  {
-    name: "title",
-    type: "text",
-    label: "Title",
-    placeholder: "Enter the blog title",
-  },
-  {
-    name: "category",
-    type: "select",
-    label: "Category",
-    placeholder: "Select a category",
-    options: [
-      "computer Science",
-      "Technology",
-      "Software Engneering",
-      "Programming",
-    ],
-  },
-  {
-    name: "content",
-    type: "textarea",
-    label: "Content",
-    placeholder: "Enter the blog content",
-  },
-
-  {
-    name: "image",
-    // type: "text",
-    label: "Image",
-    placeholder: "Enter the image URL",
-    type: "file",
-    multiple: true,
-  },
-]);
-const state = ref({
+const state = reactive({
   title: "",
   content: "",
-  images: [] as File[],
   category: "",
+  images: [] as File[],
 });
-const validate = () => {
+const validate = (state: any): FormError[] => {
   const errors = [];
-  if (!state.value.title)
+  if (!state.title)
     errors.push({ path: "title", message: "Title is required" });
-  if (!state.value.content)
+  if (!state.content)
     errors.push({ path: "content", message: "Content is required" });
-  if (!state.value.category)
+  if (!state.category)
     errors.push({ path: "category", message: "Category is required" });
   return errors;
 };
 
-const onSubmit = async (data: any) => {
-  const router = useRouter();
+const handleFileChange = (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  if (input.files) {
+    state.images = Array.from(input.files);
+  }
+};
 
-  console.log(data);
+const accesToken = localStorage.getItem("access_token");
+
+const addUserBlog = async (event: FormSubmitEvent<any>) => {
+  console.log(accesToken);
+
+  const formData = new FormData();
+  formData.append("title", state.title);
+  formData.append("content", state.content);
+  formData.append("category", state.category);
+
+  if (state.images.length > 0) {
+    state.images.forEach((file) => {
+      formData.append("images", file);
+    });
+  }
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/blogs/", {
+    const response = await fetch("http://127.0.0.1:8000/blog_posts", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${accesToken}`,
       },
-      body: JSON.stringify(data),
+      body: formData,
     });
 
     if (!response.ok) {
@@ -114,16 +98,43 @@ const onSubmit = async (data: any) => {
 <!-- eslint-disable vue/singleline-html-element-content-newline -->
 <template>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
-    <UAuthForm
-      :fields="fields"
+    <UForm
       :validate="validate"
-      :providers="providers"
-      align="top"
-      title="Create a Blog Post"
-      :ui="{ base: 'text-center', footer: 'text-center' }"
-      :submit-button="{ label: 'addblog' }"
-      @submit="onSubmit"
+      :state="state"
+      class="space-y-4"
+      @submit="addUserBlog"
     >
-    </UAuthForm>
+      <UFormGroup label="Title" name="title">
+        <UInput v-model="state.title" />
+      </UFormGroup>
+
+      <UFormGroup label="Category" name="category">
+        <USelect
+          v-model="state.category"
+          :options="[
+            'Computer Science',
+            'Technology',
+            'Software Engineering',
+            'Programming',
+          ]"
+        />
+      </UFormGroup>
+
+      <UFormGroup label="Content" name="content">
+        <UTextarea v-model="state.content" />
+      </UFormGroup>
+
+      <UFormGroup label="Images" name="images">
+        <input
+          type="file"
+          multiple
+          @change="handleFileChange"
+          accept="image/*"
+          class="form-input mt-1 block w-full"
+        />
+      </UFormGroup>
+
+      <UButton block type="submit"> Add Blog Post </UButton>
+    </UForm>
   </UCard>
 </template>

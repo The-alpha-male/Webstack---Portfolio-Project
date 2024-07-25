@@ -70,7 +70,8 @@ const onSubmitUserLogin = async (data) => {
     }
 
     const result = await response.json(); // Get the response JSON
-    console.log(result);
+
+    localStorage.setItem("access_token", result.access_token);
 
     await navigateTo({ path: "/home" });
     toast.add({
