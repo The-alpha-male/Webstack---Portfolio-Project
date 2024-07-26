@@ -10,11 +10,16 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxthq/studio',
     '@vueuse/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    'nuxt-vue3-google-signin' // Added Google Sign-In module
   ],
 
+  googleSignIn: {
+    clientId: 'CLIENT ID OBTAINED FROM GOOGLE API CONSOLE', // Added Google Sign-In configuration
+  },
+
   hooks: {
-    // Define @nuxt/ui components as global to use them in .md (feel free to add those you need)
+    // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
       const globals = components.filter(c => ['UButton'].includes(c.pascalName))
 
@@ -59,3 +64,4 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-11'
 })
+

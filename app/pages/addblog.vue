@@ -114,8 +114,15 @@ const addUserBlog = async (event: FormSubmitEvent<any>) => {
           :options="[
             'Computer Science',
             'Technology',
+            'Data science',
+            'Artificial Intelligence',
+            'Machine Learning',
+            'Natural Language Processing',
+            'Web Development',
+            'Mobile Development',
+            'UI/UX Design',
             'Software Engineering',
-            'Programming',
+            'Programming'
           ]"
         />
       </UFormGroup>
