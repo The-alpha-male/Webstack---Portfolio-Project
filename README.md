@@ -24,11 +24,9 @@ To get started with CodeHatari Blogging Hub, follow these simple steps:
 1. Sign up for an account on our platform.
 2. Create a new blog by selecting a template and customizing it to your liking.
 3. Start writing your blog posts and sharing your knowledge with the world.
-4. Promote your blog on social media and other platforms to reach a wider audience.
-5. Engage with your audience by responding to comments and feedback.
-
 
 ########################################################################
+
 
 ![nuxt-ui-saas-social-card](https://github.com/nuxt-ui-pro/saas/assets/739984/50bf4ddd-c4d5-47e5-a09e-0f699513dfb5)
 
