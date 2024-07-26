@@ -196,4 +196,19 @@ async def delete_allblogs(db: Session, ) -> dict:
         "message":"deleted all"
     }
 
+def decoded_blog(blog: object) -> dict:
+    return {
+        "id": blog.id,
+        "title": blog.title,
+        "content": blog.content,
+        "category": blog.category,
+        "author": blog.author,
+        "created_at": blog.created_at,
+        "images": [{"id": image.id, "blog_post_id": image.blog_post_id, "image_url": image.image_url} for image in blog.images],
+    }
 
+def get_blog_by_id(post_id: int, db:Session)  -> dict:
+    blog = db.query(BlogPost).filter(BlogPost.id == post_id).first()
+    if blog is None:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return decoded_blog(blog)

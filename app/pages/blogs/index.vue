@@ -94,6 +94,7 @@ onMounted(async () => {
           :key="post.id"
           :title="post.title"
           :description="post.content"
+          :to="`/blogs/${post.id}`"
           :image="
             post.images && post.images.length > 0
               ? `http://${post.images[0].image_url}`

@@ -100,3 +100,8 @@ async def get_blogs(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 async def delete_blogs( db: Session = Depends(get_db)):
     blogs = await customers_model.delete_allblogs(db=db)
     return blogs
+
+@router.get("/blog_posts/{post_id}",tags=["blogs"], response_model=customers_schema.BlogPostBase)
+async def read_blog_post(post_id: int, db: Session = Depends(get_db)):
+    blog =  customers_model.get_blog_by_id(post_id=post_id, db=db)
+    return blog
