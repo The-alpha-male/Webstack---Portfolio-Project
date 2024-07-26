@@ -8,6 +8,14 @@ useSeoMeta({
   title: "Login",
 });
 
+/**
+ * @description: An array of fields for the login form.
+ * @type: Array
+ * @property {string} name - The name of the input field.
+ * @property {string} type - The type of the input field.
+ * @property {string} label - The label of the input field.
+ * @property {string} placeholder - The placeholder text for the input field.
+ */
 const fields = [
   {
     name: "email",
@@ -23,6 +31,11 @@ const fields = [
   },
 ];
 
+/**
+ * @description: A function that validates the form data before submitting the login request.
+ * @param {Object} state - The state object containing the form data.
+ * @returns {Array} An array of error objects, where each object contains the path and message.
+ */
 const validate = (state: any) => {
   const errors = [];
   if (!state.email)
@@ -32,6 +45,14 @@ const validate = (state: any) => {
   return errors;
 };
 
+/**
+ * @description: An array of providers for the login form.
+ * @type: Array
+ * @property {string} label - The label of the provider.
+ * @property {string} icon - The icon of the provider.
+ * @property {string} color - The color of the provider's button.
+ * @property {Function} click - A function that gets called when the provider's button is clicked.
+ */
 const providers = [
   {
     label: "Continue with GitHub",
