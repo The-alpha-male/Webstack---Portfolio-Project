@@ -104,8 +104,16 @@ onMounted(async () => {
               day: 'numeric',
             })
           "
-          :authors="post.author"
-          :badge="post.badge"
+          :authors="[
+            {
+              name: post.author,
+              avatar: {
+                src: 'https://github.com/danielroe.png',
+                target: '_blank',
+              },
+              to: 'https://twitter.com/danielcroe',
+            },
+          ]"
           :orientation="index === 0 ? 'horizontal' : 'vertical'"
           :class="[index === 0 ? 'col-span-full' : '']"
           :ui="{ description: 'line-clamp-2' }"
