@@ -9,17 +9,17 @@ hero:
     # to: https://codeblogginghub.com/pro
     # icon: i-heroicons-arrow-top-right-on-square-20-solid
   links:
-    - label: Get started
-      to: "/signup"
-      size: xl
-      color: black
-      # icon: i-heroicons-arrow-right-20-solid
-      trailing: true
-    - label: Blogs
-      # icon: i-simple-icons-github
+    # - label: Get started
+    #   to: "/signup"
+    #   size: xl
+    #   color: black
+    #   # icon: i-heroicons-arrow-right-20-solid
+    #   trailing: true
+    - label: Add Blogs
+      # icon: i-simple-icons-add
       size: xl
       color: gray
-      to: blog
+      to: "/addblog"
       # target: _blank
 sections:
   - title: The power of our platform

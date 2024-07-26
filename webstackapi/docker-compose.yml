@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: fastapiwebstackapi
+    environment:
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./database.sqlite3:/code/database.sqlite3
+      - ./static:/code/static
+    restart: "no"
+  nginx:
+    image: nginx:alpine
+    container_name: nginxwebstack
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/srv/static
+    depends_on:
+      - api
