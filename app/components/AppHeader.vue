@@ -5,12 +5,13 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
 
 const links = [
   {
-    label: "Blog",
-    to: "/blog",
+    label: "News",
+    to: "/news",
   },
+
   {
-    label: "Pricing",
-    to: "/pricing",
+    label: "Blogs",
+    to: "/blogs",
   },
 ];
 </script>
@@ -19,7 +20,7 @@ const links = [
   <UHeader :links="links">
     <template #logo>
       &lt;/CodeHatari &gt;
-      <!-- <UBadge label="H" variant="subtle" class="mb-0.5" /> -->
+      <UBadge label="" variant="subtle" class="mb-0.5" />
     </template>
 
     <template #right>
