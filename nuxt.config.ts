@@ -10,8 +10,13 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxthq/studio',
     '@vueuse/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    'nuxt-vue3-google-signin' // Added Google Sign-In module
   ],
+
+  googleSignIn: {
+    clientId: 'CLIENT ID OBTAINED FROM GOOGLE API CONSOLE', // Added Google Sign-In configuration
+  },
 
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
