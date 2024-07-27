@@ -64,6 +64,11 @@ const providers = [
   },
 ];
 
+/**
+ * @description: An asynchronous function that handles the submission of the login form.
+ * @param {Object} data - The form data containing the email and password.
+ * @returns {Promise<void>} A Promise that resolves when the login process is completed.
+ */
 const onSubmitUserLogin = async (data) => {
   const router = useRouter();
 

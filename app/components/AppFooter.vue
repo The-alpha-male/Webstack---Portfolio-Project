@@ -6,16 +6,12 @@ const links = [{
   }, {
     label: 'Docs'
   }, {
-    label: 'Roadmap'
-  }, {
     label: 'Changelog'
   }]
 }, {
   label: 'Code Hatari',
   children: [{
     label: 'About'
-  }, {
-    label: 'Careers'
   }, {
     label: 'Blog'
   }]
