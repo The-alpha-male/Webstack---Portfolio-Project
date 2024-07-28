@@ -12,6 +12,14 @@ useSeoMeta({
   title: "Sign up",
 });
 
+/**
+ * @description An array of fields for the sign-up form.
+ * @param {string} name - The name of the field.
+ * @param {string} type - The type of the field (e.g., 'text', 'password').
+ * @param {string} label - The label for the field.
+ * @param {string} placeholder - The placeholder text for the field.
+ * @returns {Array} An array of fields for the sign-up form.
+ */
 const fields = [
   {
     name: "name",
@@ -33,6 +41,39 @@ const fields = [
   },
 ];
 
+/**
+ * Validates the signup form state.
+ *
+ * @param {Object} state - The state object containing form data.
+ * @param {string} state.email - The email entered by the user.
+ * @param {string} state.password - The password entered by the user.
+ * @returns {Array} errors - An array of error objects, each containing a path and a message.
+ */
+/**
+ * Validates the signup form state.
+ *
+ * @param {Object} state - The state object containing form data.
+ * @param {string} state.email - The email entered by the user.
+ * @param {string} state.password - The password entered by the user.
+ * @returns {Array} errors - An array of error objects, each containing a path and a message.
+ */
+const validate = (state: any) => {
+  const errors = [];
+  if (!state.email)
+    errors.push({ path: "email", message: "Email is required" });
+  if (!state.password)
+    errors.push({ path: "password", message: "Password is required" });
+  return errors;
+};
+
+/**
+ * Validates the signup form state.
+ *
+ * @param {Object} state - The state object containing form data.
+ * @param {string} state.email - The email entered by the user.
+ * @param {string} state.password - The password entered by the user.
+ * @returns {Array} errors - An array of error objects, each containing a path and a message.
+ */
 const validate = (state: any) => {
   const errors = [];
   if (!state.email)
