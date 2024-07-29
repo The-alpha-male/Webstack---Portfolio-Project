@@ -1,6 +1,3 @@
-<!-- eslint-disable @stylistic/semi -->
-<!-- eslint-disable @stylistic/comma-dangle -->
-<!-- eslint-disable @stylistic/quotes -->
 <script setup>
 import { ref, onMounted } from "vue";
 import { createError } from "nuxt/app"; // Import createError properly
@@ -8,26 +5,6 @@ import { createError } from "nuxt/app"; // Import createError properly
 // import { ref, computed, onMounted } from "vue";
 
 const posts = ref([]);
-
-// import type { BlogPost } from "~/types";
-
-// const { data: page } = await useAsyncData("blog", () =>
-//   queryContent("/blog").findOne()
-// );
-// if (!page.value) {
-//   throw createError({
-//     statusCode: 404,
-//     statusMessage: "Page not found",
-//     fatal: true,
-//   });
-// }
-
-// const { data: posts } = await useAsyncData("posts", () =>
-//   queryContent<BlogPost>("/blog")
-//     .where({ _extension: "md" })
-//     .sort({ date: -1 })
-//     .find()
-// );
 
 const getAPIData = async () => {
   try {
@@ -68,18 +45,7 @@ onMounted(async () => {
   }
 });
 
-// useSeoMeta({
-//   title: page.value.title,
-//   ogTitle: page.value.title,
-//   description: page.value.description,
-//   ogDescription: page.value.description,
-// });
 
-// defineOgImage({
-//   component: "Saas",
-//   title: page.value.title,
-//   description: page.value.description,
-// });
 </script>
 
 <template>
@@ -94,6 +60,7 @@ onMounted(async () => {
           :key="post.id"
           :title="post.title"
           :description="post.content"
+          :to="`/blogs/${post.id}`"
           :image="
             post.images && post.images.length > 0
               ? `http://${post.images[0].image_url}`

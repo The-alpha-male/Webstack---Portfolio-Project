@@ -9,26 +9,6 @@ import { createError } from "nuxt/app"; // Import createError properly
 
 const posts = ref([]);
 
-// import type { BlogPost } from "~/types";
-
-// const { data: page } = await useAsyncData("blog", () =>
-//   queryContent("/blog").findOne()
-// );
-// if (!page.value) {
-//   throw createError({
-//     statusCode: 404,
-//     statusMessage: "Page not found",
-//     fatal: true,
-//   });
-// }
-
-// const { data: posts } = await useAsyncData("posts", () =>
-//   queryContent<BlogPost>("/blog")
-//     .where({ _extension: "md" })
-//     .sort({ date: -1 })
-//     .find()
-// );
-
 const getAPIData = async () => {
   try {
     let res = await fetch(
@@ -65,18 +45,6 @@ onMounted(async () => {
   }
 });
 
-// useSeoMeta({
-//   title: page.value.title,
-//   ogTitle: page.value.title,
-//   description: page.value.description,
-//   ogDescription: page.value.description,
-// });
-
-// defineOgImage({
-//   component: "Saas",
-//   title: page.value.title,
-//   description: page.value.description,
-// });
 </script>
 
 <template>
@@ -104,8 +72,16 @@ onMounted(async () => {
               day: 'numeric',
             })
           "
-          :authors="post.author"
-          :badge="post.badge"
+          :authors="[
+            {
+              name: post.author,
+              avatar: {
+                src: 'https://github.com/danielroe.png',
+                target: '_blank',
+              },
+              to: 'https://twitter.com/danielcroe',
+            },
+          ]"
           :orientation="index === 0 ? 'horizontal' : 'vertical'"
           :class="[index === 0 ? 'col-span-full' : '']"
           :ui="{ description: 'line-clamp-2' }"

@@ -20,7 +20,7 @@ const links = [
   <UHeader :links="links">
     <template #logo>
       &lt;/CodeHatari &gt;
-      <UBadge label="" variant="subtle" class="mb-0.5" />
+      <UBadge label="</CH>" variant="subtle" class="mb-0.5" />
     </template>
 
     <template #right>
